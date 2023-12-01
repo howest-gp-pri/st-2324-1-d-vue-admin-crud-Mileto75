@@ -1,0 +1,152 @@
+﻿@{
+    ViewData["Title"] = "Beheer producten";
+}
+
+
+<div id="app">
+    <div class="row">
+        <div class="d-flex mb-2">
+            <h1 class="flex-grow-1">Product beheer</h1>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createProductModal">Nieuw product</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="alert alert-danger">
+            FOUTBOODSCHAPPEN HIER
+        </div>
+    </div>
+    <div>
+        <div class="">
+            <div class="d-flex justify-content-center">
+                <div class="spinner-border me-3" role="status">
+                </div>
+                <span class=" sr-only">Loading...</span>
+            </div>
+        </div>
+        <div class="row">
+            <table class="table table-bordered table-striped align-middle">
+                <thead>
+                    <tr>
+                        <th>Afbeelding</th>
+                        <th>Naam</th>
+                        <th>Prijs</th>
+                        <th>Acties</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><img src="#" width="80" /></td>
+                        <td>NAAM PRODUCT HIER</td>
+                        <td>&euro; PRIJS PRODUCT HIER</td>
+                        <td>
+                            <div>
+                                <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#updateProductModal">Bewerk</button>
+                                <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteProductConfirmModal">Delete</button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <!-- Create product -->
+    <div class="modal fade" id="createProductModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Nieuwe categorie</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <label>Naam:</label>
+                    <input type="text" class="form-control" placeholder="Naam product" />
+                    <label>Prijs:</label>
+                    <input type="number" class="form-control" placeholder="Prijs product" v />
+                    <label>Omschrijving:</label>
+                    <textarea class="form-control" placeholder="Omschrijving product"></textarea>
+                    <label>Categorie:</label>
+                    <select class="form-select">
+                        <option selected>Kies een categorie:</option>
+                        <option value="#">CATEGORIEËN HIER</option>
+                        <option value="#">CATEGORIEËN HIER</option>
+                        <option value="#">CATEGORIEËN HIER</option>
+                    </select>
+                    <label>Pegi rating:</label>
+                    <input type="number" class="form-control" placeholder="Pegirating?" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuleren</button>
+                    <button type="button" class="btn btn-primary">Opslaan</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Update product -->
+    <div class="modal fade" id="updateProductModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Bewerk NAAM PRODUCT HIER</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <label>Naam:</label>
+                    <input type="text" class="form-control" /><label>Prijs:</label>
+                    <input type="number" class="form-control" placeholder="Prijs product" />
+                    <label>Omschrijving:</label>
+                    <textarea class="form-control" placeholder="Omschrijving product"></textarea>
+                    <label>Categorie:</label>
+                    <select class="form-select">
+                        <option disabled>Kies een andere categorie:</option>
+                        <option value="#">CATEGORIEËN HIER</option>
+                        <option value="#">CATEGORIEËN HIER</option>
+                        <option value="#">CATEGORIEËN HIER</option>
+                    </select>
+                    <label>Pegi rating:</label>
+                    <input type="number" class="form-control" placeholder="Pegirating?" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuleren</button>
+                    <button type="button" class="btn btn-primary">Opslaan</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Delete product confirm -->
+    <div class="modal fade" id="deleteProductConfirmModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Verwijder NAAM PRODUCT HIER?</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Ben je zeker dat je NAAM PRODUCT HIER wenst te verwijderen?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuleren</button>
+                    <button type="button" class="btn btn-primary">Verwijder</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script>
+        var vue = new Vue({
+            el: "#app",
+            name: "ProductsAdminSection",
+            data: {
+                // voorzie de nodige properties hier
+            },
+            created: async function () {
+                // voorzie de nodige code hier
+            },
+            methods: {
+                // voorzie de nodige code hier
+            }
+        });
+    </script>
+    }

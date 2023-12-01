@@ -1,0 +1,171 @@
+﻿@{
+    ViewData["Title"] = "Beheer categorieën";
+}
+
+
+<div id="app">
+    <div class="row">
+        <div class="d-flex mb-2">
+            <h1 class="flex-grow-1">Categorie beheer</h1>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createCategoryModal">Nieuwe categorie</button>
+        </div>
+    </div>
+    <div class="row" v-if="showErrorSection">
+        <div class="alert alert-danger">
+            {{errorMessage}}
+        </div>
+    </div>
+    <div v-else>
+        <div class="" v-if="isLoading">
+            <div class="d-flex justify-content-center">
+                <div class="spinner-border" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+        </div>
+        <div class="row" v-else>
+            <table class="table table-bordered table-striped align-middle" v-if="showCategoriesSection">
+                <thead>
+                    <tr>
+                        <th>Afbeelding</th>
+                        <th>Naam</th>
+                        <th>Acties</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><img src="#" width="80" height="80" /></td>
+                        <td>Hier komt naam van categorie</td>
+                        <td>
+                            <div>
+                                <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#updateCategoryModal">Bewerk</button>
+                                <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteCategoryConfirmModal">Delete</button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <!-- Create category -->
+    <div class="modal fade" id="createCategoryModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Nieuwe categorie</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" class="form-control" placeholder="Naam categorie" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuleren</button>
+                    <button type="button" class="btn btn-primary">Opslaan</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Update category -->
+    <div class="modal fade" id="updateCategoryModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Bewerk NAAM CATEGORIE</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <label>Naam:</label>
+                    <input type="text" class="form-control" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuleren</button>
+                    <button type="button" class="btn btn-primary">Opslaan</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Delete category confirm -->
+    <div class="modal fade" id="deleteCategoryConfirmModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Verwijder NAAM CATEGORIE?</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Ben je zeker dat je NAAM CATEGORIE wenst te verwijderen?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuleren</button>
+                    <button type="button" class="btn btn-primary">Verwijder</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script>
+        var vue = new Vue({
+            el: "#app",
+            name: "categoriesAdminSection",
+            data: {
+                showCategoriesSection: false,
+                showErrorSection: false,
+                categories: null,
+                errorMessage: "",
+                isLoading: false,
+                newCategoryModel: {
+                    name: ""
+                },
+                selectedCategory: {
+                    id: "",
+                    name: "",
+                    imageUrl: "",
+                }
+            },
+            created: async function () {
+                // pas dit aan zodat enkel admins de tabel met categorieën kunnen zien
+                // gebruikers die geen admin zijn zien onderstaande melding:
+                this.errorMessage = "Enkel admins kunnen categorieën aanpassen. Je hebt onvoldoende rechten.";
+                this.showErrorSection = true;
+            },
+            methods: {
+                showCategories: async function () {
+                    // Voorzie de nodige code om categorieën op te vragen van de API
+                    // Denk aan de logica omtrent het al of niet tonen van de errorSection, categoriesSection, ...
+                    // Bekijk hiervoor de aanwezige properties in de data property
+                },
+                createCategory: async function () {
+                    // Voorzie de nodige code om categorieën aan te maken via de API
+                    // Denk aan de logica omtrent het al of niet tonen van de errorSection, categoriesSection, ...
+                    // Bekijk hiervoor de aanwezige properties in de data property
+                },
+                updateCategory: async function (categoryToUpdate) {
+                    // Voorzie de nodige code om bestaande categorieën aan te passen via de API
+                    // Denk aan de logica omtrent het al of niet tonen van de errorSection, categoriesSection, ...
+                    // Bekijk hiervoor de aanwezige properties in de data property
+                },
+                deleteCategory: async function (categoryToDelete) {
+                    // Voorzie de nodige code om bestaande categorieën aan te verwijderen via de API
+                    // Denk aan de logica omtrent het al of niet tonen van de errorSection, categoriesSection, ...
+                    // Bekijk hiervoor de aanwezige properties in de data property
+                },
+                showUpdateModal: function (category) {
+                    this.selectedCategory = category;
+                    const modalElement = document.getElementById("updateCategoryModal");
+                    const modal = bootstrap.Modal.getInstance(modalElement);
+                    modal.show();
+                },
+                showDeleteModal: function (category) {
+                    // Werk deze methode zelf uit
+                },
+                cancelCategoryAction: function () {
+                    // reset newCategoryModel
+                    // reset selectedCategory
+                }
+            }
+        });
+    </script>
+    }
